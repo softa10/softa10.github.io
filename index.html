@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine</title>
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body style="background-image: url(pozadina1.png); ">
+    
+    <h1 style="color: rgb(155, 22, 44); text-align: center;font-size: 70px;">It's Valentine's Day</h1>
+
+    <img src="tenor (1).gif" alt="Koale"
+         style="width: 13cm; height: 11cm; display: block; margin-left: auto; margin-right: auto">
+
+    <div style="text-align: center; margin-top: 30px;">
+        <h1 style="font-size: 55px;">Do you want to be my Valentine?</h1>
+
+        <a href="yes.html">
+            <button id="yesBtn" style="width: 6cm; height: 2cm; background-color: green; font-size: 35px;">
+                Yes
+            </button>
+        </a>
+
+        <button id="noBtn" style="width: 6cm; height: 2cm; background-color: red; font-size: 35px;">
+            No
+        </button>
+    </div>
+
+<script>
+let noButton = document.getElementById("noBtn");
+let yesButton = document.getElementById("yesBtn");
+
+let yesWidth = 6;      
+let yesHeight = 2;     
+let yesFontSize = 35;  
+
+noButton.addEventListener("click", function() {
+    yesWidth += 0.75;       
+    yesHeight += 0.5;       
+    yesFontSize += 6;       
+
+    yesButton.style.width = yesWidth + "cm";
+    yesButton.style.height = yesHeight + "cm";
+    yesButton.style.fontSize = yesFontSize + "px";
+});
+</script>
+
+</body>
+</html>

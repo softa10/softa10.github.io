@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine</title>
+    <style>
+        body {
+            background-image: url('pozadina1.png');
+            background-size: cover;
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Dugme za nazad */
+        .back-btn {
+            position: fixed;
+            top: 140px;
+            left: 20px;
+            z-index: 1100;
+        }
+
+        .back-btn button {
+            width: 2.2cm;
+            height: 1.3cm;
+            background-color: green;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* NASLOV + GIF + EMOJI U JEDNOM REDU */
+        .text-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            color: rgb(187, 97, 112);
+            margin-top: 80px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .text-section h1 {
+            font-size: 70px;
+            margin: 0;
+        }
+
+        .text-section img {
+            width: 2.5cm;
+        }
+
+        /* Galerija */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            justify-items: center;
+            gap: 15px;
+            padding: 20px 50px;
+        }
+
+        /* OKVIR OKO SVAKE SLIKE */
+        .gallery img {
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 270px;
+            height: auto;
+            border: 4px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            text-align: center;
+            color: rgb(187, 97, 112);
+            font-size: 60px;
+            margin: 30px 0 20px 0;
+        }
+
+        /* Modal pozadina */
+        .modal {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 5%;
+            border-radius: 10px;
+            animation: zoom 0.4s ease;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0.7);}
+            to {transform: scale(1);}
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .text-section h1 {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dugme za nazad -->
+    <div class="back-btn" id="backContainer">
+        <button id="backButton">←</button>
+    </div>
+
+    <div class="text-section">
+        <img src="slikanje.gif" alt="gif" style="width: 5cm;">
+        <h1>NAŠE NAJLJEPŠE SLIKE</h1>
+        <img src="emoji.png" alt="emoji" style="width: 4cm;">
+    </div>
+    <br><br>
+
+    <!-- Galerije ostaju iste -->
+    <div class="gallery">
+        <img src="bakimina.JPG">
+        <img src="namigivanje.JPG">
+        <img src="mibonna.JPG">
+        <img src="mina.JPG">
+        <img src="jatorbica.JPG">
+    </div>
+
+    <div class="section-title">I LOVE</div>
+
+    <div class="gallery">
+        <img src="jasako.JPG">
+        <img src="kosulje.JPG">
+        <img src="mistiker.PNG">
+        <img src="mitelefon.JPG">
+        <img src="misnijeg.JPG">
+    </div>
+
+    <div class="section-title">YOU 🤍</div>
+
+    <div class="gallery">
+        <img src="plavo.PNG">
+        <img src="mrak.JPG">
+        <img src="ruke.JPG">
+        <img src="leptir.JPG">
+        <img src="nemanas.JPG">
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="imgModal">
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.gallery img');
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("imgModal");
+        const closeBtn = document.querySelector(".close");
+        const backButton = document.getElementById("backButton");
+        const backContainer = document.getElementById("backContainer");
+
+        let modalOpen = false;
+
+        images.forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "block";
+                setTimeout(() => modal.classList.add("show"), 10);
+                modalImg.src = this.src;
+                modalOpen = true;
+
+                // SAKRIJ DUGME ZA NAZAD
+                backContainer.style.display = "none";
+            }
+        });
+
+        function closeModalSmooth() {
+            modal.classList.remove("show");
+            setTimeout(() => {
+                modal.style.display = "none";
+                modalImg.src = "";
+            }, 400);
+            modalOpen = false;
+
+            // VRATI DUGME ZA NAZAD
+            backContainer.style.display = "block";
+        }
+
+        closeBtn.onclick = closeModalSmooth;
+
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                closeModalSmooth();
+            }
+        }
+
+        backButton.onclick = function() {
+            if (!modalOpen) {
+                window.location.href = "yes.html";
+            }
+        }
+    </script>
+
+</body>
+</html>
