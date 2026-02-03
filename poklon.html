@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Valentine</title>
+    <title>Poklon</title>
     <link rel="icon" href="logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -18,15 +18,36 @@
         h1 {
             color: rgb(155, 22, 44);
             font-size: clamp(28px, 6vw, 70px);
-            margin-top: 40px;
+            margin-top: 70px;
+        }
+
+        /* 📱 MANJE DUGME ZA NAZAD (ZA TELEFON) */
+        .back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: rgb(155, 22, 44);
+            color: white;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            z-index: 1000;
+            transition: transform 0.15s ease, background 0.2s ease;
+        }
+
+        .back-btn:active {
+            transform: scale(0.95);
+            background: rgb(120, 15, 34);
         }
 
         /* KONTEJNER ZA BUKET */
         .bouquet-container {
             position: relative;
             width: 85%;
-            max-width: 600px;  /* smanjen buket */
-            margin: 40px auto;
+            max-width: 600px;
+            margin: 30px auto;
         }
 
         .bouquet-container img.bouquet {
@@ -44,43 +65,18 @@
             object-fit: cover;
         }
 
-        /* GORNJE PORUKE */
-        .msg1 {
-            top: 10%;          /* bliže buketu */
-            left: -10%;
-            width: 90px;
-            height: 130px;
-        }
-
-        .msg2 {
-            top: 10%;
-            right: -10%;
-            width: 100px;
-            height: 140px;
-        }
-
-        /* DONJE PORUKE */
-        .msg3 {
-            bottom: -5%;       /* bliže buketu */
-            left: -8%;
-            width: 90px;
-            height: 130px;
-        }
-
-        .msg4 {
-            bottom: -5%;
-            right: -8%;
-            width: 90px;
-            height: 130px;
-        }
+        .msg1 { top: 10%; left: -10%; width: 90px; height: 130px; }
+        .msg2 { top: 10%; right: -10%; width: 100px; height: 140px; }
+        .msg3 { bottom: -5%; left: -8%; width: 90px; height: 130px; }
+        .msg4 { bottom: -5%; right: -8%; width: 90px; height: 130px; }
 
         /* PORUKE ISPOD BUKETA */
         .bottom-messages {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;       /* manji razmak */
-            margin-top: 20px; /* bliže buketu */
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .bottom-messages img {
@@ -91,25 +87,21 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
-        /* RESPONSIVE */
+        /* 📱 MOBILE OPTIMIZACIJA */
         @media (max-width: 600px) {
             h1 {
-                font-size: 32px;
-                margin-top: 30px;
-            }
-
-            .bouquet-container {
-                max-width: 90%;
+                font-size: 30px;
+                margin-top: 60px;
             }
 
             .msg1, .msg2, .msg3, .msg4 {
-                width: 70px;
-                height: 100px;
+                width: 65px;
+                height: 95px;
             }
 
             .bottom-messages img {
-                width: 70px;
-                height: 100px;
+                width: 65px;
+                height: 95px;
             }
         }
     </style>
@@ -117,22 +109,21 @@
 
 <body>
 
+    <!-- Dugme za nazad -->
+    <a href="yes.html" class="back-btn">← Nazad</a>
+
     <h1>POKLON ZA MOJU LJUBAV</h1>
 
     <div class="bouquet-container">
-        <!-- BUKET -->
         <img src="ruze2.png" alt="Buket" class="bouquet">
 
-        <!-- PORUKE OKO BUKETA -->
         <img src="poruka1.jpg" class="message msg1" alt="Poruka 1">
         <img src="poruka2.webp" class="message msg2" alt="Poruka 2">
         <img src="poruka22.png" class="message msg3" alt="Poruka 3">
         <img src="poruka4.jpeg" class="message msg4" alt="Poruka 4">
     </div>
 
-    <!-- PORUKE ISPOD BUKETA -->
     <div class="bottom-messages">
-    
         <img src="slika23.png" alt="Poruka 6">
         <img src="poruka5.jpg" alt="Poruka 5">
         <img src="slika24.png" alt="Poruka 7">
