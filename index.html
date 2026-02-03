@@ -1,192 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine</title>
+    <link rel="icon" href="logo.png" type="image/png">
 
-<style>
-    /* OSNOVNO */
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        text-align: center;
-        background: url('pozadina1.png') center/cover no-repeat fixed;
-        position: relative;
-        overflow-x: hidden;
-        animation: fadeIn 1s forwards;
-    }
+    <style>
+        body {
+            background-image: url("pozadina1.png");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-    /* BLAGO ZAMUĆENA POZADINA */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: url('pozadina1.png') center/cover no-repeat;
-        filter: blur(2px);
-        z-index: -1;
-    }
+        h1 {
+            color: rgb(155, 22, 44);
+            margin: 20px 10px;
+        }
 
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
+        .title-main {
+            font-size: clamp(28px, 8vw, 70px);
+        }
 
-    /* GORNJI DIO */
-    .top-section {
-        margin-top: 30px;
-        padding: 10px;
-    }
+        .title-question {
+            font-size: clamp(22px, 6vw, 55px);
+        }
 
-    .top-section h1 {
-        color: rgb(96, 3, 3);
-        font-size: clamp(28px, 7vw, 50px);
-        margin-bottom: 10px;
-    }
+        .gif-img {
+            width: 85%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
 
-    .top-section img {
-        width: 120px;
-        opacity: 0.9;
-        animation: bounce 2s infinite;
-    }
+        .buttons {
+            margin-top: 25px;
+        }
 
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
+        button {
+            width: 40vw;
+            max-width: 220px;
+            height: 60px;
+            font-size: clamp(18px, 5vw, 35px);
+            border: none;
+            border-radius: 12px;
+            margin: 10px;
+            color: white;
+        }
 
-    /* LINIJICA ISPOD NASLOVA */
-    .divider {
-        width: 60%;
-        max-width: 400px;
-        height: 3px;
-        margin: 20px auto 10px auto;
-        background: linear-gradient(to right, transparent, rgb(96,3,3), transparent);
-        border-radius: 5px;
-    }
+        #yesBtn {
+            background-color: green;
+        }
 
-    /* DONJE KARTICE */
-    .links-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        margin: 40px 0 60px 0;
-        padding: 0 15px;
-    }
-
-    .card {
-        width: 90%;
-        max-width: 350px;
-        background: rgba(255,255,255,0.95);
-        border-radius: 18px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        padding: 15px;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-    }
-
-    /* DODIR / TOUCH EFECT */
-    .card:active {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-    }
-
-    .card img {
-        width: 100%;
-        height: 180px;
-        object-fit: contain;
-        border-radius: 12px;
-    }
-
-    .card-title {
-        margin-top: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        color: rgb(96,3,3);
-        letter-spacing: 1px;
-    }
-
-    a {
-        text-decoration: none;
-        display: block;
-    }
-
-    /* DUGME ZA VRH */
-    #toTop {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: rgb(96,3,3);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
-        font-size: 24px;
-        display: none;
-        z-index: 10;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-</style>
+        #noBtn {
+            background-color: red;
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="top-section">
-    <h1>ZNAO SAM DA ĆEŠ REĆI DA!!!</h1>
-    <img src="koalas kiss GIF.gif" alt="gif">
-    <div class="divider"></div>
-</div>
+    <h1 class="title-main">It's Valentine's Day</h1>
 
-<div class="links-section">
+    <img src="tenor (1).gif" alt="Koale" class="gif-img">
 
-    <a href="slika.html" class="card">
-        <img src="album.png" alt="Album">
-        <div class="card-title">Naše slike 📸</div>
-    </a>
+    <div class="buttons">
+        <h1 class="title-question">Do you want to be my Valentine?</h1>
 
-    <a href="pismo.html" class="card">
-        <img src="koverta.jpeg" alt="Pismo">
-        <div class="card-title">Ljubavno pismo 💌</div>
-    </a>
+        <a href="yes.html">
+            <button id="yesBtn">Yes</button>
+        </a>
 
-    <a href="poklon.html" class="card">
-        <img src="kutija.jpg" alt="Poklon">
-        <div class="card-title">Poseban poklon 🎁</div>
-    </a>
-
-    <a href="muzika.html" class="card">
-        <img src="spotify.jpg" alt="Playlist">
-        <div class="card-title">Naše pjesme 🎶</div>
-    </a>
-
-</div>
-
-<button id="toTop">⬆️</button>
+        <button id="noBtn">No</button>
+    </div>
 
 <script>
-    // Dugme "Nazad na vrh"
-    const btn = document.getElementById('toTop');
-    window.onscroll = () => {
-        btn.style.display = window.scrollY > 150 ? 'block' : 'none';
-    };
-    btn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+let noButton = document.getElementById("noBtn");
+let yesButton = document.getElementById("yesBtn");
 
-    // Touch efekt za mobilni
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.addEventListener('touchstart', () => {
-            card.style.transform = 'translateY(-5px) scale(1.02)';
-        });
-        card.addEventListener('touchend', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-        });
-    });
+let yesScale = 1;
+
+noButton.addEventListener("click", function() {
+    yesScale += 0.15;
+    yesButton.style.transform = "scale(" + yesScale + ")";
+});
 </script>
 
 </body>
