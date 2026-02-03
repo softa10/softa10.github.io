@@ -2,7 +2,9 @@
 <html lang="hr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentinovo</title>
+
     <style>
         body {
             background-image: url('pozadina1.png');
@@ -14,44 +16,46 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            padding: 15px;
         }
 
         .back-btn {
             position: fixed;
-            top: 50px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             z-index: 1100;
         }
 
         .back-btn button {
-            width: 2.2cm;
-            height: 1.3cm;
+            padding: 10px 14px;
             background-color: green;
             color: white;
             font-weight: bold;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 18px;
             cursor: pointer;
         }
 
         .pismo-box {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 40px 50px;
+            background-color: rgba(255, 255, 255, 0.96);
+            padding: 25px 20px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             max-width: 700px;
-            line-height: 1.7;
+            width: 100%;
+            line-height: 1.8;
             color: rgb(123, 3, 23);
-            font-size: 20px;
-            text-indent: 30px;
+            font-size: clamp(16px, 4.5vw, 20px);
+            text-indent: 25px;
             overflow: hidden;
         }
 
         h1 {
             text-align: center;
             color: rgb(96, 3, 3);
-            font-size: 50px;
-            margin-bottom: 30px;
+            font-size: clamp(26px, 7vw, 50px);
+            margin-bottom: 25px;
             opacity: 0;
             transform: translateY(-30px);
             animation: fadeDown 1s forwards;
@@ -60,7 +64,7 @@
         p {
             opacity: 0;
             transform: translateY(-20px);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         @keyframes fadeDown {
@@ -72,19 +76,27 @@
     </style>
 </head>
 <body>
-    <div class="back-btn" id="backContainer">
+
+    <div class="back-btn">
         <a href="yes.html">
-        <button id="backButton">←</button>
+            <button>←</button>
         </a>
     </div>
+
     <div class="pismo-box">
-        <h1>PISMO ZA MOJU LJUBAV🤍🤍🤍</h1>
+        <h1>PISMO ZA MOJU LJUBAV 🤍🤍🤍</h1>
+
         <p>Draga Ermina,</p>
+
         <p>Ne mogu vjerovati da je već prošlo 8 mjeseci otkako smo zajedno… a da ne spominjem 10 mjeseci otkako si ti u mom životu unijela toliko smijeha, sreće, ljubavi i nježnosti. Svaki trenutak proveden s tobom je kao iz najljepše bajke koju ne želim da ikada završi.</p>
+
         <p>Tvoj zagrljaj i poljubac me smiruju, a u isto vrijeme razbuđuju i ispunjavaju srećom. Jako sam zahvalan što si dio mog života i što ga svakodnevno uljepšavaš svojim postojanjem.</p>
+
         <p>Za ovaj Dan zaljubljenih želim ti reći da te volim više nego što mogu riječima opisati, cijenim svaki trenutak s tobom i jedva čekam sve lijepe i romantične avanture koje nas čekaju.</p>
+
         <p>Sretno Valentinovo, ljubavi moja. Hvala ti što si uvijek tu pored mene i što me činiš najsretnijom osobom na svijetu.</p>
-        <p>Tvoj Bakir.</p>
+
+        <p><b>Tvoj Bakir.</b></p>
     </div>
 
     <script>
@@ -92,8 +104,10 @@
         paragraphs.forEach((p, index) => {
             setTimeout(() => {
                 p.style.animation = "fadeDown 1s forwards";
-            }, 1000 * (index + 1)); // svaki pasus nakon prethodnog
+            }, 900 * (index + 1));
         });
     </script>
+
 </body>
 </html>
+
