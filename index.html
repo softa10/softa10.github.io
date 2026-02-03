@@ -2,46 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine</title>
     <link rel="icon" href="logo.png" type="image/png">
+
+    <style>
+        body {
+            background-image: url("pozadina1.png");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: rgb(155, 22, 44);
+            margin: 20px 10px;
+        }
+
+        .title-main {
+            font-size: clamp(28px, 8vw, 70px);
+        }
+
+        .title-question {
+            font-size: clamp(22px, 6vw, 55px);
+        }
+
+        .gif-img {
+            width: 85%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .buttons {
+            margin-top: 25px;
+        }
+
+        button {
+            width: 40vw;
+            max-width: 220px;
+            height: 60px;
+            font-size: clamp(18px, 5vw, 35px);
+            border: none;
+            border-radius: 12px;
+            margin: 10px;
+            color: white;
+        }
+
+        #yesBtn {
+            background-color: green;
+        }
+
+        #noBtn {
+            background-color: red;
+        }
+    </style>
 </head>
-<body style="background-image: url(pozadina1.png); ">
-    
-    <h1 style="color: rgb(155, 22, 44); text-align: center;font-size: 70px;">It's Valentine's Day</h1>
 
-    <img src="tenor (1).gif" alt="Koale"
-         style="width: 13cm; height: 11cm; display: block; margin-left: auto; margin-right: auto">
+<body>
 
-    <div style="text-align: center; margin-top: 30px;">
-        <h1 style="font-size: 55px;">Do you want to be my Valentine?</h1>
+    <h1 class="title-main">It's Valentine's Day</h1>
+
+    <img src="tenor (1).gif" alt="Koale" class="gif-img">
+
+    <div class="buttons">
+        <h1 class="title-question">Do you want to be my Valentine?</h1>
 
         <a href="yes.html">
-            <button id="yesBtn" style="width: 6cm; height: 2cm; background-color: green; font-size: 35px;">
-                Yes
-            </button>
+            <button id="yesBtn">Yes</button>
         </a>
 
-        <button id="noBtn" style="width: 6cm; height: 2cm; background-color: red; font-size: 35px;">
-            No
-        </button>
+        <button id="noBtn">No</button>
     </div>
 
 <script>
 let noButton = document.getElementById("noBtn");
 let yesButton = document.getElementById("yesBtn");
 
-let yesWidth = 6;      
-let yesHeight = 2;     
-let yesFontSize = 35;  
+let yesScale = 1;
 
 noButton.addEventListener("click", function() {
-    yesWidth += 0.75;       
-    yesHeight += 0.5;       
-    yesFontSize += 6;       
-
-    yesButton.style.width = yesWidth + "cm";
-    yesButton.style.height = yesHeight + "cm";
-    yesButton.style.fontSize = yesFontSize + "px";
+    yesScale += 0.15;
+    yesButton.style.transform = "scale(" + yesScale + ")";
 });
 </script>
 
