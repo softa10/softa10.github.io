@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naša muzika</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        text-align: center;
+        background: url('pozadina1.png') center/cover no-repeat fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        color: rgb(96,3,3);
+    }
+
+    h1 {
+        font-size: clamp(24px, 6vw, 40px);
+        margin: 20px 0;
+    }
+
+    .player {
+        margin: 10px 0 30px 0;
+        width: 80%;
+        max-width: 400px;
+    }
+
+    .playlist {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .track {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255,255,255,0.95);
+        padding: 10px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .track img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .track:hover {
+        transform: scale(1.02);
+    }
+
+    a.back {
+        margin-top: 30px;
+        text-decoration: none;
+        color: white;
+        background: rgb(96,3,3);
+        padding: 10px 20px;
+        border-radius: 12px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transition: transform 0.2s;
+    }
+
+    a.back:active {
+        transform: scale(0.95);
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Naša playlista 🎶</h1>
+
+<!-- Audio player -->
+<audio id="audioPlayer" class="player" controls>
+    <source id="audioSource" src="" type="audio/mpeg">
+    Vaš pretraživač ne podržava audio.
+</audio>
+
+<div class="playlist">
+    <!-- Track 1 -->
+    <div class="track" data-src="pjesma1.mp3">
+        <img src="imanesto.jpg" alt="Pjesma 1">
+        <div>Ima nešto od srca do srca - Crvena Jabuka🎵</div>
+    </div>
+    <!-- Track 2 -->
+    <div class="track" data-src="pjesma2.mp3">
+        <img src="military.jpg" alt="Pjesma 2">
+        <div>Military - Jala Brat & Buba Corelli🎵</div>
+    </div>
+    <!-- Track 3 -->
+    <div class="track" data-src="pjesma3.mp3">
+        <img src="krivog.jpg" alt="Pjesma 3">
+        <div>I krivog bih te branila - Milena Ćeranić🎵</div>
+    </div>
+    <!-- Track 4 -->
+    <div class="track" data-src="pjesma4.mp3">
+        <img src="savrsenpar.jpg" alt="Pjesma 4">
+        <div>Savršen par - Anastasija🎵</div>
+    </div>
+    
+</div>
+
+<a href="yes.html" class="back">⬅️ Nazad</a>
+
+<script>
+    const player = document.getElementById('audioPlayer');
+    const source = document.getElementById('audioSource');
+    const tracks = document.querySelectorAll('.track');
+
+    tracks.forEach(track => {
+        track.addEventListener('click', () => {
+            const src = track.getAttribute('data-src');
+            source.src = src;
+            player.load();
+            player.play();
+        });
+    });
+</script>
+
+</body>
+</html>
