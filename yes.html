@@ -1,119 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine</title>
 
-    <style>
-        body {
-            background-image: url('pozadina1.png');
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            text-align: center;
-        }
+<style>
+    /* OSNOVNO */
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        text-align: center;
+        background: url('pozadina1.png') center/cover no-repeat fixed;
+        position: relative;
+        overflow-x: hidden;
+        animation: fadeIn 1s forwards;
+    }
 
-        /* GORNJI DIO */
-        .top-section {
-            margin-top: 30px;
-            padding: 10px;
-        }
+    /* BLAGO ZAMUĆENA POZADINA */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: url('pozadina1.png') center/cover no-repeat;
+        filter: blur(2px);
+        z-index: -1;
+    }
 
-        .top-section h1 {
-            color: rgb(96, 3, 3);
-            font-size: clamp(28px, 7vw, 50px);
-            margin-bottom: 10px;
-        }
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
 
-        .top-section img {
-            width: 120px;
-            opacity: 0.9;
-        }
+    /* GORNJI DIO */
+    .top-section {
+        margin-top: 30px;
+        padding: 10px;
+    }
 
-        /* LINIJICA ISPOD NASLOVA */
-        .divider {
-            width: 60%;
-            max-width: 400px;
-            height: 3px;
-            margin: 20px auto 10px auto;
-            background: linear-gradient(to right, transparent, rgb(96,3,3), transparent);
-            border-radius: 5px;
-        }
+    .top-section h1 {
+        color: rgb(96, 3, 3);
+        font-size: clamp(28px, 7vw, 50px);
+        margin-bottom: 10px;
+    }
 
-        /* DONJE KARTICE */
-        .links-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            margin: 40px 0 60px 0;
-            padding: 0 15px;
-        }
+    .top-section img {
+        width: 120px;
+        opacity: 0.9;
+        animation: bounce 2s infinite;
+    }
 
-        .card {
-            width: 85%;
-            max-width: 320px;
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            padding: 15px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-        }
+    /* LINIJICA ISPOD NASLOVA */
+    .divider {
+        width: 60%;
+        max-width: 400px;
+        height: 3px;
+        margin: 20px auto 10px auto;
+        background: linear-gradient(to right, transparent, rgb(96,3,3), transparent);
+        border-radius: 5px;
+    }
 
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: contain;
-            border-radius: 12px;
-        }
+    /* DONJE KARTICE */
+    .links-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 40px 0 60px 0;
+        padding: 0 15px;
+    }
 
-        .card-title {
-            margin-top: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            color: rgb(96,3,3);
-            letter-spacing: 1px;
-        }
+    .card {
+        width: 90%;
+        max-width: 350px;
+        background: rgba(255,255,255,0.95);
+        border-radius: 18px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        padding: 15px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
 
-        a {
-            text-decoration: none;
-        }
-    </style>
+    /* DODIR / TOUCH EFECT */
+    .card:active {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    }
+
+    .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        border-radius: 12px;
+    }
+
+    .card-title {
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: rgb(96,3,3);
+        letter-spacing: 1px;
+    }
+
+    a {
+        text-decoration: none;
+        display: block;
+    }
+
+    /* DUGME ZA VRH */
+    #toTop {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgb(96,3,3);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        font-size: 24px;
+        display: none;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+</style>
 </head>
 
 <body>
 
-    <div class="top-section">
-        <h1>ZNAO SAM DA ĆEŠ REĆI DA!!!</h1>
-        <img src="koalas kiss GIF.gif" alt="gif">
-        <div class="divider"></div>
-    </div>
+<div class="top-section">
+    <h1>ZNAO SAM DA ĆEŠ REĆI DA!!!</h1>
+    <img src="koalas kiss GIF.gif" alt="gif">
+    <div class="divider"></div>
+</div>
 
-    <div class="links-section">
+<div class="links-section">
 
-        <a href="slika.html" class="card">
-            <img src="album.png" alt="Album">
-            <div class="card-title">Naše slike 📸</div>
-        </a>
+    <a href="slika.html" class="card">
+        <img src="album.png" alt="Album">
+        <div class="card-title">Naše slike 📸</div>
+    </a>
 
-        <a href="pismo.html" class="card">
-            <img src="koverta.jpeg" alt="Pismo">
-            <div class="card-title">Ljubavno pismo 💌</div>
-        </a>
+    <a href="pismo.html" class="card">
+        <img src="koverta.jpeg" alt="Pismo">
+        <div class="card-title">Ljubavno pismo 💌</div>
+    </a>
 
-        <a href="poklon.html" class="card">
-            <img src="kutija.jpg" alt="Poklon">
-            <div class="card-title">Poseban poklon 🎁</div>
-        </a>
+    <a href="poklon.html" class="card">
+        <img src="kutija.jpg" alt="Poklon">
+        <div class="card-title">Poseban poklon 🎁</div>
+    </a>
 
-    </div>
+    <a href="muzika.html" class="card">
+        <img src="spotify.jpg" alt="Playlist">
+        <div class="card-title">Naše pjesme 🎶</div>
+    </a>
+
+</div>
+
+<button id="toTop">⬆️</button>
+
+<script>
+    // Dugme "Nazad na vrh"
+    const btn = document.getElementById('toTop');
+    window.onscroll = () => {
+        btn.style.display = window.scrollY > 150 ? 'block' : 'none';
+    };
+    btn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+
+    // Touch efekt za mobilni
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('touchstart', () => {
+            card.style.transform = 'translateY(-5px) scale(1.02)';
+        });
+        card.addEventListener('touchend', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+</script>
 
 </body>
 </html>
