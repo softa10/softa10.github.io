@@ -2,32 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Valetine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine</title>
+
+    <style>
+        body {
+            background-image: url('pozadina1.png');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* GORNJI DIO */
+        .top-section {
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .top-section h1 {
+            color: rgb(96, 3, 3);
+            font-size: clamp(28px, 7vw, 50px);
+            margin-bottom: 10px;
+        }
+
+        .top-section img {
+            width: 120px;
+            opacity: 0.9;
+        }
+
+        /* LINIJICA ISPOD NASLOVA */
+        .divider {
+            width: 60%;
+            max-width: 400px;
+            height: 3px;
+            margin: 20px auto 10px auto;
+            background: linear-gradient(to right, transparent, rgb(96,3,3), transparent);
+            border-radius: 5px;
+        }
+
+        /* DONJE KARTICE */
+        .links-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin: 40px 0 60px 0;
+            padding: 0 15px;
+        }
+
+        .card {
+            width: 85%;
+            max-width: 320px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            padding: 15px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .card-title {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(96,3,3);
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
-<body style="background-image: url('pozadina1.png');">
 
-    <div style="display: flex; justify-content: center; align-items: center; gap: 35px; margin-top: 20px;">
-    
-    <img src="koalas kiss GIF.gif" alt="gif" style="width: 160px;">
+<body>
 
-    <h1 style="color: rgb(96, 3, 3); margin: 0; text-align: center; font-size: 50px;">
-        ZNAO SAM DA ĆEŠ REĆI DA!!!
-    </h1>
+    <div class="top-section">
+        <h1>ZNAO SAM DA ĆEŠ REĆI DA!!!</h1>
+        <img src="koalas kiss GIF.gif" alt="gif">
+        <div class="divider"></div>
+    </div>
 
-    <img src="koalas kiss GIF.gif" alt="gif" style="width: 160px;">
-    <br>
-</div>
+    <div class="links-section">
 
-    <div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 65px;">
-        <a href="slika.html">
-        <img src="album.png" style="width: 8.5cm; height: 10cm;">
+        <a href="slika.html" class="card">
+            <img src="album.png" alt="Album">
+            <div class="card-title">Naše slike 📸</div>
         </a>
-        <a href="pismo.html">
-        <img src="koverta.jpeg" style="width: 13cm; height: 8cm;">
+
+        <a href="pismo.html" class="card">
+            <img src="koverta.jpeg" alt="Pismo">
+            <div class="card-title">Ljubavno pismo 💌</div>
         </a>
-        <a href="poklon.html">
-        <img src="kutija.jpg" style="width: 9cm; height: 9cm;">
+
+        <a href="poklon.html" class="card">
+            <img src="kutija.jpg" alt="Poklon">
+            <div class="card-title">Poseban poklon 🎁</div>
         </a>
+
     </div>
 
 </body>
